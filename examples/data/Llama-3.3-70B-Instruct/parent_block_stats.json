@@ -1,0 +1,19 @@
+{
+  "stats": {
+    "num_kv_heads": 8,
+    "ffn_intermediate_size": 28672,
+    "memory_mib": 1437.109375,
+    "runtime_ms": 816.9723410644532,
+    "num_params": 855654400,
+    "attention_memory_mib": 765.1015625,
+    "attention_runtime_ms": 353.836930828847,
+    "attention_num_params": 151003136,
+    "ffn_memory_mib": 672.0078125,
+    "ffn_runtime_ms": 463.1501249872372,
+    "ffn_num_params": 704651264
+  },
+  "metrics": {
+    "kl_div": 0.0,
+    "lm_loss": 1.6418086076155305
+  }
+}

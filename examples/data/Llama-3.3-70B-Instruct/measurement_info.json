@@ -1,0 +1,6 @@
+{
+    "batch_size": 256,
+    "sequence_length": 1200,
+    "gpu": "NVIDIA H100 80GB HBM3",
+    "dtype": "fp8"
+}
