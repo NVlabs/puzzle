@@ -135,7 +135,7 @@ def create_solution_dataframe(solution, block_library, parent_block_stats):
     return df.sort_values('layer_idx')
 
 
-def visualize_runtime_reduction(solution, block_library, parent_block_stats, title="Runtime Reduction Across Layers"):  
+def visualize_runtime_reduction(solution, block_library, parent_block_stats, title="Runtime Reduction Across Layers", static: bool = False):  
     """
     Visualize how each layer's runtime is reduced compared to the baseline.
     """
@@ -197,12 +197,15 @@ def visualize_runtime_reduction(solution, block_library, parent_block_stats, tit
         )
     )
     
-    try:
+    if static:
+        try:
+            png_bytes = fig.to_image(format="png", scale=2)
+            from IPython.display import Image, display
+            display(Image(data=png_bytes))
+        except Exception:
+            print("Static export requires 'kaleido' (pip install kaleido).")
+    else:
         fig.show()
-    except ValueError as e:
-        if "nbformat" in str(e) or "Mime type" in str(e):
-            print("Cannot display interactive plot due to missing dependency.")
-            print("    Please install: pip install --upgrade nbformat")
     
     # Print summary statistics
     total_runtime = df['runtime_ms'].sum()
@@ -219,7 +222,7 @@ def visualize_runtime_reduction(solution, block_library, parent_block_stats, tit
     return df
 
 
-def compare_solutions(solutions, block_library, parent_block_stats, measurement_info):  
+def compare_solutions(solutions, block_library, parent_block_stats, measurement_info, static: bool = True):  
     """Compare multiple Puzzle solutions."""
     
     fig = make_subplots(
@@ -300,17 +303,20 @@ def compare_solutions(solutions, block_library, parent_block_stats, measurement_
     fig.update_layout(height=800, showlegend=True, 
                      title_text="Puzzle Solutions Comparison")
     
-    try:
+    if static:
+        try:
+            png_bytes = fig.to_image(format="png", scale=2)
+            from IPython.display import Image, display
+            display(Image(data=png_bytes))
+        except Exception:
+            print("Static export requires 'kaleido' (pip install kaleido).")
+        return None
+    else:
         fig.show()
-    except ValueError as e:
-        if "nbformat" in str(e) or "Mime type" in str(e):
-            print("Cannot display interactive plot due to missing dependency.")
-            print("    Please install: pip install --upgrade nbformat")
-    
-    return fig
+        return fig
 
 
-def comprehensive_solution_comparison(solutions, block_library, parent_block_stats, measurement_info):  
+def comprehensive_solution_comparison(solutions, block_library, parent_block_stats, measurement_info, static: bool = False):  
     """Compare multiple solutions and display results table and visualization."""
     print("Comprehensive Solution Comparison")
     print("=" * 80)
@@ -351,6 +357,6 @@ def comprehensive_solution_comparison(solutions, block_library, parent_block_sta
     # Visualize all solutions
     print("\nVisual Comparison:")
     # Store the figure to prevent duplicate display (fig.show() is called inside the function)
-    _ = compare_solutions(solutions, block_library, parent_block_stats, measurement_info)
+    _ = compare_solutions(solutions, block_library, parent_block_stats, measurement_info, static=static)
 
 
