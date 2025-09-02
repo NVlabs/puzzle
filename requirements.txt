@@ -1,0 +1,7 @@
+mip>=1.13.0
+tqdm>=4.65.0
+notebook>=6.5.0
+ipykernel>=6.20.0
+nbformat>=5.7.0
+pandas>=1.5.0
+plotly>=5.11.0
