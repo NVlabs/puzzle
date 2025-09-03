@@ -1,10 +1,12 @@
-# Puzzle: Distillation-Based NAS for Inference-Optimized LLMs
+# Demo code for Puzzle: Distillation-Based NAS for Inference-Optimized LLMs
 
 [![ICML 2025](https://img.shields.io/badge/ICML-2025-blue)](https://icml.cc/virtual/2025/poster/45275)
 [![Paper](https://img.shields.io/badge/Paper-OpenReview-red)](https://openreview.net/pdf?id=RY5MMBHRqo)
 [![Video](https://img.shields.io/badge/Video-Summary-green)](https://www.youtube.com/watch?v=YsIv9Kr99C4)
 
 A demonstration of **Puzzle**, a hardware-aware framework that accelerates Large Language Model (LLM) inference while preserving model capabilities through neural architecture search (NAS) and knowledge distillation.
+
+**Note**: This repo focuses on the MIP-based architecture search, and is not a full release of Puzzle. We are working to release a full end-to-end implementation in the future which would contain the full capabilities of Puzzle, including block library construction and Blockwise Local Distillation.
 
 ## Paper
 
@@ -46,9 +48,6 @@ This repository implements Stage 2, demonstrating how to:
 - Define hardware constraints (memory, latency requirements)
 - Search for optimal architectures using Mixed-Integer Programming
 - Visualize and compare different deployment scenarios
-
-
-**Note**: The block library construction, Blockwise Local Distillation and global distillation stages are not included in this release. We are working to release a full end-to-end implementation in the future.
 
 
 ## Repo Structure
